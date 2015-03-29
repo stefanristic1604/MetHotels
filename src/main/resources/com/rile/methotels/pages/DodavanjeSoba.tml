@@ -1,0 +1,38 @@
+<html t:type="layout" title="TapestryTest Index"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <body>
+        <t:beaneditform object="soba" />
+        <t:grid t:source="sobe" />
+
+        <div class="standard_border"></div>
+    </body>
+
+    <div class="row marketing">
+        <div class="col-lg-4">
+            <h4>Smestaj</h4>
+            <img src="images/apartments.jpg" alt=""></img>
+            <p>Hotel u svom sastavu ima luksuzno opremljene apartmane , premium sobe , superior sobe , standardne sobe , spa centar i restoran. Apartmani su...</p>
+        </div>
+
+        <div class="col-lg-4">
+            <h4>Spa centar</h4> 
+            <img src="images/croppedimage300140-spa2.JPG" alt=""></img>
+            <p>Danasnjica iziskuje psihofizicki napor i konstantan stres, ciji su uzroci brz tempo Divljenja i nedostatak vremena. Idealnu relaksaciju nasim...</p>
+        </div>
+
+        <div class="col-lg-4">
+            <h4>Restoran</h4>
+            <img src="images/croppedimage300140-rest1.JPG" alt="" ></img>
+            <p>Cafe restoran, svojim luksuznim stilom i udobnoscu, predstavlja idealno mesto sa uslugom radnog dorucka i slatkog predaha uz nase kolace. Bez...</p>
+        </div>
+    </div>
+  
+</html>
+
+
+
+
+

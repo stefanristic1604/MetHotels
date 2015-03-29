@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="shortcut icon" href="${asset:context:/favicon.ico}" />
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="header">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <t:loop source="pageNames" value="pageName">
+                            <t:any element="li" class="prop:classForPageName">
+                                <t:pagelink page="prop:pageName">${menuPageName}</t:pagelink>
+                            </t:any>
+                        </t:loop>
+                    </ul>
+                    <!-- make a method that splits names on uppercase -->
+                    <!--
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" class="active"><a t:type="pagelink" page="Index">Pocetna</a></li>
+                        <li role="presentation"><a t:type="pagelink" page="PregledSoba">Pregled Soba</a></li>
+                        <li role="presentation"><a t:type="pagelink" page="RezervacijaSoba">Rezervacija Soba</a></li>
+                        <li role="presentation"><a t:type="pagelink" page="ONama">O Nama</a></li>
+                    </ul>
+                    -->
+                </nav>
+                <h3 class="text-muted">MetHotels</h3>
+            </div>
+            
+            <t:body />
+            
+                       
+            <!-- marketing section should be included only for some pages -->
+            <!--
+            <t:block id="marketingBlock">
+                <div class="row marketing">
+                    <div class="col-lg-4">
+                        <h4>Smestaj</h4>
+                        <img src="images/apartments.jpg" alt=""></img>
+                        <p>Hotel u svom sastavu ima luksuzno opremljene apartmane , premium sobe , superior sobe , standardne sobe , spa centar i restoran. Apartmani su...</p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h4>Spa centar</h4> 
+                        <img src="images/croppedimage300140-spa2.JPG" alt=""></img>
+                        <p>Danasnjica iziskuje psihofizicki napor i konstantan stres, ciji su uzroci brz tempo Divljenja i nedostatak vremena. Idealnu relaksaciju nasim...</p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h4>Restoran</h4>
+                        <img src="images/croppedimage300140-rest1.JPG" alt="" ></img>
+                        <p>Cafe restoran, svojim luksuznim stilom i udobnoscu, predstavlja idealno mesto sa uslugom radnog dorucka i slatkog predaha uz nase kolace. Bez...</p>
+                    </div>
+                </div>
+            </t:block>
+            -->
+            
+            <footer class="footer">
+                <p>&copy; Rile 2015</p>
+            </footer>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+    
+</html>

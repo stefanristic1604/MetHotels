@@ -1,0 +1,179 @@
+/* 
+    Created on : Mar 14, 2015, 7:31:53 PM
+    Author     : Stefan
+*/
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #171717;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #D49F41;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #DADADA;
+    border-top: 1px solid #D49F41;
+    text-align: center;
+}
+
+.btn-gold {
+    background: url("http://www.hotelevropa.rs/common/images/slide-rm-bg.png") repeat-x scroll 0 0 transparent;
+    color: #fff;
+}
+.btn-gold:hover {
+
+}
+
+/* Customize container */
+@media (min-width: 980px) {
+    .container {
+        max-width: 980px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    padding: 0 0;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #D49F41;
+}
+
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+
+.jumbotron img {
+    height: 400px;
+    max-width: 100%;
+    //max-height: 100%;
+}
+
+.myjumbotron {
+    padding: 0;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #D49F41;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.myjumbotron .btn {
+    float: right;
+    margin: 20px 0;
+}
+
+.myjumbotron img {
+    height: 400px;
+    width: 100%;
+}
+
+.myjumbotron_info {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: block;
+    width: 50%;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    padding: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.myjumbotron_info h4 {
+    text-align: center;
+}
+
+.myjumbotron_info p {
+    text-align: left;
+}
+
+.marketing {
+    margin-bottom: 30px;
+}   
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+.marketing p {
+    color: #DADADA;
+}
+
+.marketing h4 {
+    border-bottom: 1px solid #CE9439;
+    padding-bottom: 10px;
+}
+
+.rezervacija_form {
+    margin: 30px 20%;
+}
+
+.standard_border {
+    border-bottom: 1px solid #CE9439;
+    margin: 30px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+
+.well {
+    background-color: transparent;
+    border: 0px solid #CE9439;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active {
+    border-color: #CE9439;
+    background: url("http://www.hotelevropa.rs/common/images/slide-rm-bg.png") repeat-x scroll 0 0 transparent;
+    color: #fff;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd),
+.table-hover > tbody > tr:hover {
+    background-color: transparent;
+}

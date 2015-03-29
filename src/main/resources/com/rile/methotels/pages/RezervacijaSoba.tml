@@ -1,0 +1,84 @@
+<html t:type="layout" title="TapestryTest Index"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+    <body>
+        <div class="row rezervacija_form">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="brSoba" class="col-sm-2 control-label">Broj Soba</label>
+                    <div class="col-xs-4">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dan_prijave" class="col-sm-2 control-label" style="padding-top: 0px">Dan Prijave</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="date" data-provide="datepicker" data-date-format="mm/dd/yyyy" />
+                    </div>
+                    <label for="dan_odjave" class="col-sm-2 control-label" style="padding-top: 0px">Dan Odjave</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="date" data-provide="datepicker" data-date-format="mm/dd/yyyy" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ime" class="col-sm-2 control-label">Ime</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Ime" />
+                    </div>
+                    <label for="prezime" class="col-sm-2 control-label">Prezime</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Prezime" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-gold">Pošalji</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+            
+        <div class="standard_border"></div>
+    </body>
+
+    <div class="row marketing">
+        <div class="col-lg-4">
+            <h4>Smestaj</h4>
+            <img src="images/apartments.jpg" alt=""></img>
+            <p>Hotel u svom sastavu ima luksuzno opremljene apartmane , premium sobe , superior sobe , standardne sobe , spa centar i restoran. Apartmani su...</p>
+        </div>
+
+        <div class="col-lg-4">
+            <h4>Spa centar</h4> 
+            <img src="images/croppedimage300140-spa2.JPG" alt=""></img>
+            <p>Danasnjica iziskuje psihofizicki napor i konstantan stres, ciji su uzroci brz tempo Divljenja i nedostatak vremena. Idealnu relaksaciju nasim...</p>
+        </div>
+
+        <div class="col-lg-4">
+            <h4>Restoran</h4>
+            <img src="images/croppedimage300140-rest1.JPG" alt="" ></img>
+            <p>Cafe restoran, svojim luksuznim stilom i udobnoscu, predstavlja idealno mesto sa uslugom radnog dorucka i slatkog predaha uz nase kolace. Bez...</p>
+        </div>
+    </div>
+  
+</html>
+
+
+
+
+
