@@ -27,7 +27,6 @@ public class Layout {
     @Symbol(SymbolConstants.APPLICATION_VERSION)
     private String appVersion;
     
-    
     public String getClassForPageName() {
         return resources.getPageName().equalsIgnoreCase(pageName)
                 ? "active"

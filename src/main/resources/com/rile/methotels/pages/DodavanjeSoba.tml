@@ -4,8 +4,8 @@
       xmlns:p="tapestry:parameter">
 
     <body>
-        <t:beaneditform object="soba" />
-        <t:grid t:source="sobe" />
+        <t:beaneditform object="soba" exclude="id" />
+        <t:grid source="sobe" exclude="id" />
 
         <div class="standard_border"></div>
     </body>
