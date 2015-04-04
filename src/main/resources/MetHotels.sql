@@ -18,6 +18,36 @@ USE `methotels`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `rezervacija`
+--
+
+DROP TABLE IF EXISTS `rezervacija`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rezervacija` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `soba_id` int(11) DEFAULT NULL,
+  `ime` varchar(256) DEFAULT NULL,
+  `prezime` varchar(368) DEFAULT NULL,
+  `email` varchar(1024) DEFAULT NULL,
+  `broj_soba` int(11) DEFAULT NULL,
+  `dan_prijave` date DEFAULT NULL,
+  `dan_odjave` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rezervacija`
+--
+
+LOCK TABLES `rezervacija` WRITE;
+/*!40000 ALTER TABLE `rezervacija` DISABLE KEYS */;
+INSERT INTO `rezervacija` VALUES (4,5,'Stefan','Ristic','stefilix933@gmail.com',3,'2015-04-04','2015-04-11');
+/*!40000 ALTER TABLE `rezervacija` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `soba`
 --
 
@@ -25,13 +55,13 @@ DROP TABLE IF EXISTS `soba`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `soba` (
-  `id` int(10) unsigned NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `naziv` varchar(64) DEFAULT NULL,
   `sprat` varchar(64) DEFAULT NULL,
   `opis` varchar(2048) DEFAULT NULL,
   `refSlika` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +70,7 @@ CREATE TABLE `soba` (
 
 LOCK TABLES `soba` WRITE;
 /*!40000 ALTER TABLE `soba` DISABLE KEYS */;
+INSERT INTO `soba` VALUES (5,'Classic','3','Opis','Slika'),(6,'Deluxe','1','Opis','Slika');
 /*!40000 ALTER TABLE `soba` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-30 19:47:00
+-- Dump completed on 2015-04-04 17:18:17

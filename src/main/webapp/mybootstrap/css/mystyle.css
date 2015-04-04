@@ -176,3 +176,21 @@ body {
 .table-hover > tbody > tr:hover {
     background-color: transparent;
 }
+
+
+table a {
+    color: #D49F41;
+}
+
+table a:hover, table a:focus {
+    color: #D49F41;
+    text-decoration: underline;
+}
+
+.datePicker {
+    background-color: #1B7B48;
+}
+
+.numeric {
+    text-align: left; 
+}

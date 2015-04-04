@@ -34,7 +34,7 @@ public class Layout {
     }
     
     public String[] getPageNames() {
-        return new String[] {"Index", "DodavanjeSoba", "RezervacijaSoba", "ONama"};
+        return new String[] {"Index", "DodavanjeSoba", "RezervacijeSoba", "ONama"};
     }
     
     public String getMenuPageName() {

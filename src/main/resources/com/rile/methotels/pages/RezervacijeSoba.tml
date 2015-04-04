@@ -3,11 +3,26 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
-    <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
     <body>
+        
+        <t:beaneditform object="rezervacija" exclude="id, sobaId" add="soba" >
+            <p:soba>
+                <t:label for="soba"/>
+                <t:select t:id="soba" value="soba" encoder="encoder" model="sobe" validate="required" />
+            </p:soba>
+        </t:beaneditform>
+        
+        <!--
         <div class="row rezervacija_form">
-            <form class="form-horizontal">
+            <form class="form-horizontal" t:type="form">
                 <div class="form-group">
+                    <t:errors />
+                </div>
+                <div class="form-group">
+                    <label for="brSoba" class="col-sm-2 control-label">Tip Sobe</label>
+                    <div class="col-xs-4">
+                        <select class="form-control" t:type="select" t:model="sobe" t:value="soba" t:encoder="encoder" />
+                    </div>
                     <label for="brSoba" class="col-sm-2 control-label">Broj Soba</label>
                     <div class="col-xs-4">
                         <select class="form-control">
@@ -52,7 +67,14 @@
                 </div>
             </form>
         </div>
-            
+        -->
+        
+        <t:grid source="rezervacije" exclude="id, sobaId" add="delete" row="oneRezervacija">
+            <p:deleteCell>
+                <t:actionlink t:id="delete" context="oneRezervacija.id">Delete</t:actionlink>
+            </p:deleteCell>
+        </t:grid>
+        
         <div class="standard_border"></div>
     </body>
 

@@ -5,8 +5,13 @@
 
     <body>
         <t:beaneditform object="soba" exclude="id" />
-        <t:grid source="sobe" exclude="id" />
-
+        
+        <t:grid source="sobe" exclude="id" add="delete" row="oneSoba">
+            <p:deleteCell>
+                <t:actionlink t:id="delete" context="oneSoba.id">Delete</t:actionlink>
+            </p:deleteCell>
+        </t:grid>
+        
         <div class="standard_border"></div>
     </body>
 
