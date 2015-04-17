@@ -1,5 +1,12 @@
 package com.rile.methotels.services;
 
+import com.rile.methotels.services.dao.SobaDao;
+import com.rile.methotels.services.dao.KorisnikDaoImpl;
+import com.rile.methotels.services.dao.SobaDaoImpl;
+import com.rile.methotels.services.dao.KorisnikDao;
+import com.rile.methotels.services.dao.RezervacijaDao;
+import com.rile.methotels.services.dao.RezervacijaDaoImpl;
+import com.rile.methotels.services.security.PageProtectionFilter;
 import java.io.IOException;
 
 import org.apache.tapestry5.*;
@@ -22,13 +29,14 @@ import org.slf4j.Logger;
 public class AppModule {
 
     public static void bind(ServiceBinder binder) {
-        // binder.bind(MyServiceInterface.class, MyServiceImpl.class
-        binder.bind(RezervacijaDao.class, RezervacijaDaoImpl.class);
-        binder.bind(SobaDao.class, SobaDaoImpl.class);
         // Make bind() calls on the binder object to define most IoC services.
         // Use service builder methods (example below) when the implementation
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
+        // binder.bind(MyServiceInterface.class, MyServiceImpl.class
+        binder.bind(RezervacijaDao.class, RezervacijaDaoImpl.class);
+        binder.bind(SobaDao.class, SobaDaoImpl.class);
+        binder.bind(KorisnikDao.class, KorisnikDaoImpl.class);
     }
 
     public static void contributeFactoryDefaults(
@@ -61,11 +69,10 @@ public class AppModule {
     @ApplicationDefaults
     public static void setupEnvironment(MappedConfiguration<String, Object> configuration) {
         configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
-//		configuration.add(SymbolConstants.BOOTSTRAP_ROOT, "context:mybootstrap");
+        //configuration.add(SymbolConstants.BOOTSTRAP_ROOT, "context:mybootstrap");
         configuration.add(SymbolConstants.MINIFICATION_ENABLED, true);
     }
-    
-    
+
     // This will override the bundled bootstrap version and will compile it at runtime
     @Contribute(JavaScriptStack.class)
     @Core
@@ -73,14 +80,13 @@ public class AppModule {
         configuration.override(
             "bootstrap.css",
             new StackExtension(
-                StackExtensionType.STYLESHEET, 
-                "context:mybootstrap/css/mybootstrap.css"
-            ), 
+                    StackExtensionType.STYLESHEET,
+                    "context:mybootstrap/css/mybootstrap.css"
+            ),
             "before:tapestry.css"
         );
     }
-    
-    
+
     /**
      * This is a service definition, the service will be named "TimingFilter". The interface, RequestFilter, is used within the RequestHandler service pipeline, which is built from
      * the RequestHandler service configuration. Tapestry IoC is responsible for passing in an appropriate Logger instance. Requests for static resources are handled at a higher
@@ -129,4 +135,8 @@ public class AppModule {
         configuration.add("Timing", filter);
     }
 
+    public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration) {
+        configuration.addInstance("PageProtectionFilter", PageProtectionFilter.class);
+    }
+    
 }

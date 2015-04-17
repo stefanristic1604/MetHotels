@@ -1,0 +1,36 @@
+<html t:type="layout" title="Pregled Soba"
+      showMarketing="true"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <body>
+        
+        <div class="row" style="margin: 25px 0px">
+            <div class="col-lg-6">
+                <h4>Standardna soba</h4>
+                <img src="images/he-302-7.jpg" alt="" />
+                <p>Standardne sobe hotela Evropa, kojih ima 5, zauzimaju površinu od 25 m2  do 30 m2  Sobe su predviđene  za boravak 2 osobe. Na raspolaganju su tri standardne sobe...</p>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Superior soba</h4> 
+                <img src="images/he-306.jpg" alt="" />
+                <p>Superior sobe hotela Evropa, kojih ima 3,  zauzimaju površinu od 40 m2 . Sobe su predviđene  za boravak 2 osobe.  Sve sobe sadrže: LCD TV i kablovska televizija...</p>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Premium soba</h4>
+                <img src="images/he-305-2.jpg" alt="" />
+                <p>Premium sobe hotela Evropa kojih ima 5, zauzimaju površinu od 60 m2 Sobe su predviđene  za boravak 2 osobe. Postoji mogućnost stavljanja pomoćnog ležaja u sobu.  Sve sobe sadrže: LCD...</p>
+            </div>
+                
+            <div class="col-lg-6">
+                <h4>Deluxe soba</h4>
+                <img src="images/he-302-7.jpg" alt="" />
+                <p>Elegantne i fine linije Deluxe apartmana upotpunjene osvetljenjem koje je prilagodljivo potrebi i raspolozenju gosta, ispunjavaju sve preduslove za maksimalan komfor i uzivanje. Apartmani ove kategorije sastoje se iz...</p>
+            </div>
+        </div>
+    </body>
+  
+</html>

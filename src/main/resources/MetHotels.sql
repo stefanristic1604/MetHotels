@@ -18,6 +18,33 @@ USE `methotels`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `korisnik`
+--
+
+DROP TABLE IF EXISTS `korisnik`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `korisnik` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `korisnicko_ime` varchar(256) NOT NULL,
+  `lozinka` varchar(256) NOT NULL,
+  `email` varchar(1024) NOT NULL,
+  `rola` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `korisnik`
+--
+
+LOCK TABLES `korisnik` WRITE;
+/*!40000 ALTER TABLE `korisnik` DISABLE KEYS */;
+INSERT INTO `korisnik` VALUES (1,'stefan.ristic.1604','202cb962ac59075b964b07152d234b70','stefan.ristic.1604@metropolitan.ac.rs','Admin'),(2,'admin','202cb962ac59075b964b07152d234b70','admin@methotels.com','Admin'),(3,'sluzbenik','202cb962ac59075b964b07152d234b70','sluzbenik@methotels.com','Sluzbenik'),(5,'rile','202cb962ac59075b964b07152d234b70','rile@gmail.com','Korisnik');
+/*!40000 ALTER TABLE `korisnik` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `rezervacija`
 --
 
@@ -83,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-04 17:18:17
+-- Dump completed on 2015-04-17 21:54:19

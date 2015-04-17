@@ -1,0 +1,21 @@
+<html t:type="layout" title="Unos Korisnika"
+      showBodyTitle="false"
+      showMarketing="false"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <body>
+        <!-- forma za unos -->
+        <t:beaneditform t:id="form" object="korisnikReg" exclude="id">
+            <t:errors />
+        </t:beaneditform>
+        <!-- lista korisnika -->
+        <t:grid source="korisnici" exclude="id" add="delete" row="oneKorisnik">
+            <p:deleteCell>
+                <t:actionlink t:id="delete" context="oneKorisnik.id">Delete</t:actionlink>
+            </p:deleteCell>
+        </t:grid>
+    </body>
+
+</html>

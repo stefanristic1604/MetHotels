@@ -37,10 +37,11 @@ public class Rezervacija implements Serializable {
     @Validate("required")
     @Column(name = "soba_id")
     private Integer sobaId;
+    
     @Validate("required")
     @Column(name = "ime")
-    
     private String ime;
+    
     @Validate("required")
     @Column(name = "prezime")
     private String prezime;

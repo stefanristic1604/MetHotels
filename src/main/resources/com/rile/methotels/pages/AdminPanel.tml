@@ -1,0 +1,33 @@
+<html t:type="layout" title="Admin Control Panel"
+    showBodyTitle="true"
+    showMarketing="true"
+    t:sidebarTitle="Framework Version"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    xmlns:p="tapestry:parameter"
+    >
+    <head>
+    <style>
+        .admin-content li {
+            list-style-type: none;
+            padding-top: 5px;
+        }
+        .admin-content li a {
+            width: 100%;
+        } 
+    </style>
+    </head>
+    <body>
+        <div class="row admin-content">
+            <ul class="col-lg-4 list-group"></ul>
+            <ul class="col-lg-4 list-group" style="">
+                <li class=""><t:pagelink page="AdminPanel" class="btn btn-gold">Admin Panel</t:pagelink></li>
+                <li><t:pagelink page="UnosKorisnika" class="btn btn-gold">Unos Korisnika</t:pagelink></li>
+                <li><t:pagelink page="DodavanjeSoba" class="btn btn-gold">Dodavanje Soba</t:pagelink></li>
+                <li><t:pagelink page="RezervacijeSoba" class="btn btn-gold">Rezervacije Soba</t:pagelink></li>
+                <li><t:pagelink page="PregledSoba" class="btn btn-gold">Pregled Soba</t:pagelink></li>
+            </ul>
+            <ul class="col-lg-4 list-group"></ul>
+        </div>
+    </body>
+  
+</html>

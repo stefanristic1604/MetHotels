@@ -1,0 +1,17 @@
+<html t:type="layout" title="Prijava"
+      showMarketing="true"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <body>
+        <t:beaneditform t:id="form" object="korisnikLogin" submitlabel="Login" exclude="id, rola">
+            <t:errors/>
+            <p:lozinka>
+                <t:label for="lozinka"/>
+                <t:passwordfield t:id="lozinka" value="korisnikLogin.lozinka"/>
+            </p:lozinka>
+        </t:beaneditform>
+    </body>
+  
+</html>

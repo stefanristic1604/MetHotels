@@ -1,4 +1,4 @@
-package com.rile.methotels.services;
+package com.rile.methotels.services.dao;
 
 import com.rile.methotels.entities.Rezervacija;
 import java.util.List;

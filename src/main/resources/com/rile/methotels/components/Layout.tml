@@ -3,7 +3,6 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" >
     <head>
         <meta charset="utf-8" />
-        <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
         <title>${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="" />
@@ -14,33 +13,65 @@
     <body>
         <div class="container">
             <div class="header">
-                <nav>
-                    <ul class="nav nav-pills pull-right">
-                        <t:loop source="pageNames" value="pageName">
-                            <t:any element="li" class="prop:classForPageName">
-                                <t:pagelink page="prop:pageName">${menuPageName}</t:pagelink>
-                            </t:any>
-                        </t:loop>
-                    </ul>
-                    <!-- make a method that splits names on uppercase -->
-                    <!--
-                    <ul class="nav nav-pills pull-right">
-                        <li role="presentation" class="active"><a t:type="pagelink" page="Index">Početna</a></li>
-                        <li role="presentation"><a t:type="pagelink" page="DodavanjeSoba">Dodavanje Soba</a></li>
-                        <li role="presentation"><a t:type="pagelink" page="RezervacijeSoba">Rezervacije Soba</a></li>
-                        <li role="presentation"><a t:type="pagelink" page="ONama">O Nama</a></li>
-                    </ul>
-                    -->
+                <nav class="navbar navbar-default" role="navigation">
+                    <a class="navbar-brand" t:type="pagelink" page="Index">MetHotels</a>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-left">
+                            <t:loop source="leftNavigationMenu" value="navItem">
+                                <t:if test="${!navItem.subPages}">
+                                    <t:any element="li" class="prop:classForPageName">
+                                        <t:pagelink page="${navItem.mainPage}">${getMenuPageName(navItem.mainPage)}</t:pagelink>
+                                    </t:any>
+                                </t:if>
+                                <t:if test="${navItem.subPages}">
+                                    <t:any element="li" class="dropdown prop:classForPageName">
+                                        <t:pagelink data-toggle="dropdown" class="dropdown-toggle" page="${navItem.mainPage}">
+                                            ${getMenuPageName(navItem.mainPage)}<b class="caret"></b>
+                                        </t:pagelink>
+                                        <ul class="dropdown-menu">
+                                            <t:loop source="navItem.subPages" value="var:subPage">
+                                                <t:any element="li" class="prop:classForPageName">
+                                                               <!-- 
+                                                                Does not work: ${getMenuPageName(var:subPage)} 
+                                                                might have to create property subPage
+                                                                -->
+                                                    <t:pagelink page="var:subPage">${var:subPage}</t:pagelink>
+                                                </t:any>
+                                            </t:loop>
+                                        </ul>
+                                    </t:any>
+                                </t:if>
+                            </t:loop>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <t:if test="!loggedIn">
+                                <li><a t:type="pagelink" page="Prijava">Prijava</a></li>
+                                <li>|</li>
+                                <li><a t:type="pagelink" page="Registracija">Registracija</a> </li>
+                            </t:if>
+                            <t:if test="loggedIn">
+                                <li><t:actionlink t:id="logout">Odjava</t:actionlink></li> 
+                                <li>|</li>
+                                <li>Welcome ${loggedInKorisnik.korisnickoIme}!</li>
+                            </t:if>
+                        </ul>
+
+                    </div>
                 </nav>
-                <h3 class="text-muted">MetHotels</h3>
             </div>
+            
+            <t:if test="showBodyTitle">
+                <h3 class="text-muted" style="text-align:center;">${title}</h3>
+            </t:if>
             
             <t:body />
             
-                       
-            <!-- marketing section should be included only for some pages -->
-            <!--
-            <t:block id="marketingBlock">
+            <!-- <div class="standard_border"></div> -->
+            
+            <!-- include marketing content for some pages if needed -->
+            <t:if test="showMarketing">
+                <div class="standard_border"></div>
+                
                 <div class="row marketing">
                     <div class="col-lg-4">
                         <h4>Smestaj</h4>
@@ -60,17 +91,15 @@
                         <p>Cafe restoran, svojim luksuznim stilom i udobnoscu, predstavlja idealno mesto sa uslugom radnog dorucka i slatkog predaha uz nase kolace. Bez...</p>
                     </div>
                 </div>
-            </t:block>
-            -->
+            </t:if>
             
             <footer class="footer">
                 <p>&copy; Rile 2015</p>
             </footer>
 
         </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </body>
     
 </html>

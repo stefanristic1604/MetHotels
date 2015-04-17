@@ -1,13 +1,18 @@
 package com.rile.methotels.pages;
 
+import com.rile.methotels.entities.Korisnik;
 import com.rile.methotels.entities.Rezervacija;
+import com.rile.methotels.entities.Role;
 import com.rile.methotels.entities.Soba;
-import com.rile.methotels.services.RezervacijaDao;
-import com.rile.methotels.services.SobaDao;
+import com.rile.methotels.services.dao.RezervacijaDao;
+import com.rile.methotels.services.dao.SobaDao;
+import com.rile.methotels.services.security.ProtectedPage;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
@@ -15,6 +20,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  *
  * @author Stefan
  */
+@ProtectedPage
+@RolesAllowed(value={"Admin", "Sluzbenik", "Korisnik"})
 public class RezervacijeSoba {
     
     @Property
@@ -38,6 +45,11 @@ public class RezervacijeSoba {
     @Property
     private List<Rezervacija> rezervacije;
     
+    @SessionState
+    private Korisnik loggedInKorisnik;
+    
+    @Property
+    private boolean listSobaAuthorization;
     
     public ValueEncoder getEncoder() {
         return new ValueEncoder<Soba>() {
@@ -54,7 +66,7 @@ public class RezervacijeSoba {
         };
     }
     
-    void onActivate() {
+    Object onActivate() {
         if (rezervacije == null) {
             rezervacije = new ArrayList<Rezervacija>();
         }
@@ -64,6 +76,12 @@ public class RezervacijeSoba {
             sobe = new ArrayList<Soba>();
         }
         sobe = sobaDao.getListSoba();
+        
+        Role kRola = loggedInKorisnik.getRola();
+        if (kRola == Role.Admin || kRola == Role.Sluzbenik) {
+            listSobaAuthorization = true;
+        }
+        return null;
     }
     
     @CommitAfter
@@ -75,7 +93,6 @@ public class RezervacijeSoba {
     
     @CommitAfter
     Object onActionFromDelete(int id) {
-        System.out.println("Remove object " + id);
         rezervacijaDao.removeRezervacija(id);
         return this;
     }

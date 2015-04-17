@@ -1214,7 +1214,7 @@ h2,
 h3,
 .h3 {
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 h1 small,
 .h1 small,
@@ -1578,9 +1578,9 @@ pre code {
     width: 970px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1256px) {
   .container {
-    width: 1170px;
+    width: 1256px;
   }
 }
 .container-fluid {
@@ -3452,9 +3452,9 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
+  color: #333;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #D49F41;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3863,11 +3863,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+  padding: 10px 0 0 10px;
 }
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  //padding: 10px 0 0 10px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3887,8 +3888,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
+  /*
   background-color: #eee;
   border-color: #337ab7;
+  */
 }
 .nav .nav-divider {
   height: 1px;
@@ -4052,7 +4055,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -4067,7 +4070,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-collapse {
   padding-right: 15px;
-  padding-left: 15px;
+  //padding-left: 15px;
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid transparent;
@@ -4160,10 +4163,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
-  padding: 15px 15px;
+  //height: 50px;
+  //padding: 15px 15px;
   font-size: 18px;
-  line-height: 20px;
+  //line-height: 20px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4211,9 +4214,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin: 7.5px -15px;
 }
 .navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 20px;
+  //padding-top: 10px;
+  //padding-bottom: 10px;
+  //line-height: 20px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -4247,8 +4250,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    //padding-top: 15px;
+    //padding-bottom: 15px;
   }
 }
 .navbar-form {
@@ -4336,6 +4339,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  border-radius: 5px;
 }
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   margin-bottom: 0;
@@ -4380,39 +4384,39 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  //background-color: #f8f8f8;
+  //border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: #D49F41;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+  color: #FF9800;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  //color: #777;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  //color: #D49F41;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
+  color: #D49F41;
+  //background-color: #e7e7e7;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
-  color: #ccc;
-  background-color: transparent;
+  color: #D49F41;
+  //background-color: transparent;
 }
 .navbar-default .navbar-toggle {
   border-color: #ddd;
@@ -4431,8 +4435,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
+  //color: #555;
+  //background-color: #e7e7e7;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
