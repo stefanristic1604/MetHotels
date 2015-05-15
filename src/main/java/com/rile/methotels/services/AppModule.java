@@ -1,5 +1,7 @@
 package com.rile.methotels.services;
 
+import com.rile.methotels.services.dao.GenericDao;
+import com.rile.methotels.services.dao.GenericDaoImpl;
 import com.rile.methotels.services.dao.SobaDao;
 import com.rile.methotels.services.dao.KorisnikDaoImpl;
 import com.rile.methotels.services.dao.SobaDaoImpl;
@@ -34,6 +36,7 @@ public class AppModule {
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class
+        binder.bind(GenericDao.class, GenericDaoImpl.class);
         binder.bind(RezervacijaDao.class, RezervacijaDaoImpl.class);
         binder.bind(SobaDao.class, SobaDaoImpl.class);
         binder.bind(KorisnikDao.class, KorisnikDaoImpl.class);

@@ -1,18 +1,14 @@
 package com.rile.methotels.services.dao;
 
 import com.rile.methotels.entities.Korisnik;
-import java.util.List;
 
 /**
  *
  * @author Stefan
  */
-public interface KorisnikDao {
+public interface KorisnikDao extends GenericDao<Korisnik> {
 
-    public List<Korisnik> getListKorisnika();
-    public void removeKorisnik(Integer id);
-    public Korisnik checkKorisnik(String email, String password);
-    public Korisnik registerKorisnik(Korisnik korisnik);
+    public Korisnik checkKorisnik(String korisnickoIme, String lozinka);
     public boolean checkIfEmailExists(String email);
 
 }

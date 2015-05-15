@@ -35,6 +35,12 @@
             <version>5.1.34</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.got5</groupId>
+            <artifactId>tapestry5-jquery</artifactId>
+            <version>4.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- Uncomment this to add support resource minification and runtime compilation -->
         <!--
         <dependency>
@@ -168,10 +174,29 @@
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>
         </repository>
+        
         <repository>
             <id>unknown-jars-temp-repo</id>
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
             <url>file:${project.basedir}/lib</url>
+        </repository>
+        
+        <repository>
+            <id>devlab722-repo</id>
+            <url>http://nexus.devlab722.net/nexus/content/repositories/releases
+            </url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        
+        <repository>
+            <id>devlab722-snapshot-repo</id>
+            <url>http://nexus.devlab722.net/nexus/content/repositories/snapshots
+            </url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
         </repository>
     </repositories>
 

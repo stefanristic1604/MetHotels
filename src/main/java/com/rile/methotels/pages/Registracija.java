@@ -52,7 +52,8 @@ public class Registracija {
             String unhashPassword = korisnikReg.getLozinka();
             korisnikReg.setLozinka(getMD5Hash(unhashPassword));
             korisnikReg.setRola(Role.Korisnik);
-            Korisnik korisnik = korisnikDao.registerKorisnik(korisnikReg);
+            // registruj korisnika
+            Korisnik korisnik = korisnikDao.merge(korisnikReg);
             loggedInKorisnik = korisnik;
             return Index.class;
         } else {

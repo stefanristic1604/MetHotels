@@ -7,7 +7,6 @@ import com.rile.methotels.entities.Soba;
 import com.rile.methotels.services.dao.RezervacijaDao;
 import com.rile.methotels.services.dao.SobaDao;
 import com.rile.methotels.services.security.ProtectedPage;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.ValueEncoder;
@@ -61,40 +60,36 @@ public class RezervacijeSoba {
 
             @Override
             public Soba toValue(String string) {
-                return sobaDao.getSobaById(Integer.parseInt(string));
+                return sobaDao.getByID(Integer.parseInt(string));
             }
         };
     }
     
     Object onActivate() {
-        if (rezervacije == null) {
-            rezervacije = new ArrayList<Rezervacija>();
-        }
-        rezervacije = rezervacijaDao.getListRezervacija();
-        
-        if (sobe == null) {
-            sobe = new ArrayList<Soba>();
-        }
-        sobe = sobaDao.getListSoba();
+        rezervacije = rezervacijaDao.loadAll();
+        sobe = sobaDao.loadAll();
         
         Role kRola = loggedInKorisnik.getRola();
         if (kRola == Role.Admin || kRola == Role.Sluzbenik) {
             listSobaAuthorization = true;
+        } else {
+            listSobaAuthorization = false;
         }
         return null;
     }
     
     @CommitAfter
     Object onSuccess() {
+        // dodaj rezervaciju
         rezervacija.setSobaId(soba.getId());
-        rezervacijaDao.addRezervacija(rezervacija);
-        return this;
+        rezervacijaDao.persist(rezervacija);
+        return null;
     }
     
     @CommitAfter
     Object onActionFromDelete(int id) {
-        rezervacijaDao.removeRezervacija(id);
-        return this;
+        rezervacijaDao.delete(id);
+        return null;
     }
     
 }

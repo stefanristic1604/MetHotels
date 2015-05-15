@@ -5,7 +5,7 @@
       xmlns:p="tapestry:parameter">
 
     <body>
-        <t:beaneditform t:id="form" object="korisnikLogin" submitlabel="Login" exclude="id, rola">
+        <t:beaneditform t:id="form" object="korisnikLogin" submitlabel="Prijavi se" exclude="id, email, rola">
             <t:errors/>
             <p:lozinka>
                 <t:label for="lozinka"/>

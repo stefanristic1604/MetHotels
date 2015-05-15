@@ -1,0 +1,13 @@
+<html t:type="layout" title="TestCounterComponent"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <body>
+        <div style="text-align: center;">
+            <t:counter />
+        </div>
+        <br/>
+    </body>
+    
+</html>

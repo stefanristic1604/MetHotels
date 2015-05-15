@@ -4,6 +4,6 @@ package com.rile.methotels.pages;
  *
  * @author Stefan
  */
-public class ONama {
-
+public class TestCounterComponent {
+    
 }

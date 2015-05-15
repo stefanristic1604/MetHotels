@@ -3,17 +3,21 @@
     t:sidebarTitle="Framework Version"
     xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
     xmlns:p="tapestry:parameter">
-
     <body>
+        <!--<t:genericeditor t:id="ge" bean="soba" />-->
+        
         <t:beaneditform object="soba" exclude="id" />
         
-        <t:grid source="sobe" exclude="id" add="delete" row="oneSoba">
+        <t:grid source="sobe" exclude="id" add="edit, delete" row="oneSoba">
+            <p:editCell>
+                <t:actionlink t:id="edit" context="oneSoba">Edit</t:actionlink>
+            </p:editCell>
             <p:deleteCell>
                 <t:actionlink t:id="delete" context="oneSoba.id">Delete</t:actionlink>
             </p:deleteCell>
         </t:grid>
-    </body>
-  
+        
+    </body> 
 </html>
 
 

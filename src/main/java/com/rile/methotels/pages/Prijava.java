@@ -46,12 +46,10 @@ public class Prijava {
     }
 
     Object onSuccess() {
-        String password = getMD5Hash(korisnikLogin.getLozinka());
-        System.out.println("Lozinka: "  + password);
-        Korisnik korisnik = korisnikDao.checkKorisnik(korisnikLogin.getEmail(), password);
+        String lozinka = getMD5Hash(korisnikLogin.getLozinka());
+        Korisnik korisnik = korisnikDao.checkKorisnik(korisnikLogin.getKorisnickoIme(), lozinka);
         if (korisnik != null) {
             loggedInKorisnik = korisnik;
-            System.out.println("Logovan");
             if (loggedInKorisnik.getRola() == Role.Admin) {
                 return AdminPanel.class;
             }

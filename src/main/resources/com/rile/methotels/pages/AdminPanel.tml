@@ -20,7 +20,6 @@
         <div class="row admin-content">
             <ul class="col-lg-4 list-group"></ul>
             <ul class="col-lg-4 list-group" style="">
-                <li class=""><t:pagelink page="AdminPanel" class="btn btn-gold">Admin Panel</t:pagelink></li>
                 <li><t:pagelink page="UnosKorisnika" class="btn btn-gold">Unos Korisnika</t:pagelink></li>
                 <li><t:pagelink page="DodavanjeSoba" class="btn btn-gold">Dodavanje Soba</t:pagelink></li>
                 <li><t:pagelink page="RezervacijeSoba" class="btn btn-gold">Rezervacije Soba</t:pagelink></li>

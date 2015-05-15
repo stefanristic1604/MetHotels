@@ -8,7 +8,6 @@ import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -23,23 +22,17 @@ public class UnosKorisnika {
     
     @Property
     private Korisnik korisnikReg;
-    @SessionState
-    private Korisnik loggedInKorisnik;
     @Inject
     private KorisnikDao korisnikDao;
     @Component
     private BeanEditForm form;
-
     @Property
     private Korisnik oneKorisnik;
     @Property
     private List<Korisnik> korisnici;
     
     Object onActivate() {
-        if (korisnici == null) {
-            korisnici = new ArrayList<Korisnik>();
-        }
-        korisnici = korisnikDao.getListKorisnika();
+        korisnici = korisnikDao.loadAll();
         return null;
     }
     
@@ -62,9 +55,9 @@ public class UnosKorisnika {
         if (!korisnikDao.checkIfEmailExists(korisnikReg.getEmail())) {
             String unhashPassword = korisnikReg.getLozinka();
             korisnikReg.setLozinka(getMD5Hash(unhashPassword));
-            Korisnik korisnik = korisnikDao.registerKorisnik(korisnikReg);
-            loggedInKorisnik = korisnik;
-            return Index.class;
+            // registruj korisnika
+            korisnikDao.merge(korisnikReg);
+            return this;
         } else {
             form.recordError("Email koji ste uneli vec postoji");
             return null;
@@ -73,8 +66,8 @@ public class UnosKorisnika {
     
     @CommitAfter
     Object onActionFromDelete(int id) {
-        korisnikDao.removeKorisnik(id);
-        return this;
+        korisnikDao.delete(id);
+        return null;
     }
     
 }
