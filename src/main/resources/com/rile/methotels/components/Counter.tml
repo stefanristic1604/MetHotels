@@ -1,9 +1,10 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
     <t:content>
-        <div> 
-            Count = ${count}<br/>
-            <t:eventlink t:event="increment" style="color: green;">Increment</t:eventlink><br/>
-            <t:eventlink t:event="clear" style="color: red;">Clear</t:eventlink>
+        <div style="text-align: center;"> 
+            <p>Count = ${count}</p>
+            <t:eventlink t:event="increment" style="color: green;">Increment</t:eventlink>
+            <br />
+            <t:eventlink t:event="clear" style="color: red;">Clear</t:eventlink>                
         </div>  
     </t:content>
 </html>

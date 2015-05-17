@@ -43,12 +43,17 @@ public abstract class GenericDaoImpl<T extends AbstractEntity> implements Generi
     }
 
     @Override
-    public void delete(final Integer id) {
-        session.delete(
-            session.createCriteria(classType)
-            .add(Restrictions.eq("id", id)).uniqueResult()
-        );
+    public T delete(final Integer id) {
+        AbstractEntity aEntity = (AbstractEntity) getByID(id);
+        session.delete((T) aEntity);
         session.flush();
+        return (T) aEntity;
+    }
+
+    @Override
+    public T saveOrUpdate(T t) {
+        session.saveOrUpdate(t);
+        return t;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.rile.methotels.entities.Role;
 import com.rile.methotels.entities.Korisnik;
 import com.rile.methotels.services.dao.KorisnikDao;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.PageLoaded;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
@@ -25,6 +26,9 @@ public class Registracija {
     @Component
     private BeanEditForm form;
 
+    @PageLoaded
+    void onPageLoad() {}
+    
     Object onActivate() {
         if (loggedInKorisnik.getEmail() != null) {
             return Index.class;

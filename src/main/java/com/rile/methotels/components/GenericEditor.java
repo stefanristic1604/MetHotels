@@ -18,12 +18,12 @@ import org.apache.tapestry5.services.PropertyConduitSource;
  *
  * @author Stefan
  */
-public class GenericEditor<T extends AbstractEntity, DAO extends GenericDao> {
+public class GenericEditor<T extends AbstractEntity> {
 
     @Inject
     private PropertyConduitSource conduit;
     @Inject
-    private DAO genericDao;
+    private GenericDao genericDao;
     @Persist
     @Property
     private T bean;

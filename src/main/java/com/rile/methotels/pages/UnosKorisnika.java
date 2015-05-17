@@ -3,10 +3,10 @@ package com.rile.methotels.pages;
 import com.rile.methotels.entities.Korisnik;
 import com.rile.methotels.services.dao.KorisnikDao;
 import com.rile.methotels.services.security.ProtectedPage;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.PageLoaded;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
@@ -31,9 +31,11 @@ public class UnosKorisnika {
     @Property
     private List<Korisnik> korisnici;
     
-    Object onActivate() {
+    void onActivate() {}
+
+    @PageLoaded
+    void onPageLoad() {
         korisnici = korisnikDao.loadAll();
-        return null;
     }
     
     public String getMD5Hash(String yourString) {
@@ -57,16 +59,15 @@ public class UnosKorisnika {
             korisnikReg.setLozinka(getMD5Hash(unhashPassword));
             // registruj korisnika
             korisnikDao.merge(korisnikReg);
-            return this;
         } else {
             form.recordError("Email koji ste uneli vec postoji");
-            return null;
         }
+        return null;
     }
     
     @CommitAfter
     Object onActionFromDelete(int id) {
-        korisnikDao.delete(id);
+        korisnici.remove(korisnikDao.delete(id));
         return null;
     }
     

@@ -1,0 +1,22 @@
+<html t:type="layout" title="TestComponent"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <head>
+        <style>
+            h1, h2, h3 {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display: table; margin: 0 auto;">
+            <h2>Counter</h2>
+            <t:counter />
+            <h2>Navigation</h2>
+            <t:navigation source="getNavPages()" />
+        </div>
+        <br/>
+    </body>
+    
+</html>

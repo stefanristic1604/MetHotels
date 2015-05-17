@@ -14,7 +14,7 @@
             </p:soba>
         </t:beaneditform>
         
-        <t:if test="listSobaAuthorization">
+        <t:if test="hasListSobaAuthorization()">
             <t:grid source="rezervacije" exclude="id, sobaId" add="delete" row="oneRezervacija">
                 <p:deleteCell>
                     <t:actionlink t:id="delete" context="oneRezervacija.id">Delete</t:actionlink>

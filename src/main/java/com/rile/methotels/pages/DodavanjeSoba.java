@@ -1,12 +1,11 @@
 package com.rile.methotels.pages;
 
-import com.rile.methotels.components.GenericEditor;
 import com.rile.methotels.entities.Soba;
 import com.rile.methotels.services.dao.SobaDao;
 import com.rile.methotels.services.security.ProtectedPage;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
-import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.PageLoaded;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
@@ -33,30 +32,45 @@ public class DodavanjeSoba {
     @Inject
     private SobaDao sobaDao;
 
+    /*
+    @Component
+    @Property
+    private GenericEditor<Soba> geSoba;
+    */
     
-//    @Component
-//    @Property
-//    private GenericEditor<Soba, SobaDao> ge;
+    void onActivate() {}
     
-    void onActivate() {
+    @PageLoaded
+    void onPageLoad() {
         sobe = sobaDao.loadAll();
     }
 
     @CommitAfter
     Object onSuccess() {
-        sobaDao.merge(soba);
+        if (soba != null) {
+            boolean elementExists = sobe.indexOf(soba) != -1;
+            if (elementExists) {
+                sobe.set(sobe.indexOf(soba), sobaDao.merge(soba));
+            }
+            else {
+                sobe.add(sobaDao.merge(soba));
+            }
+            soba = new Soba();
+        }
         return null;
     }
 
     @CommitAfter
     Object onActionFromDelete(int id) {
-        sobaDao.delete(id);
+        sobe.remove(sobaDao.delete(id));
         return null;
     }
 
     @CommitAfter
-    Object onActionFromEdit(Soba s) {
-        soba = s;
+    Object onActionFromEdit(Soba editSoba) {
+        if (editSoba != null) {
+            soba = editSoba;
+        }
         return null;
     }
 }
