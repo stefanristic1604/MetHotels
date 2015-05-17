@@ -17,7 +17,7 @@
         <t:if test="hasListSobaAuthorization()">
             <t:grid source="rezervacije" exclude="id, sobaId" add="delete" row="oneRezervacija">
                 <p:deleteCell>
-                    <t:actionlink t:id="delete" context="oneRezervacija.id">Delete</t:actionlink>
+                    <t:actionlink t:id="delete" t:mixins="Confirm" context="oneRezervacija.id">Delete</t:actionlink>
                 </p:deleteCell>
             </t:grid>
         </t:if>

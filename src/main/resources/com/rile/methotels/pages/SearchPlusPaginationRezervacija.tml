@@ -1,0 +1,10 @@
+<html t:type="layout" title="SearchPlusPaginationRezervacija"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <body>
+        Pretraga: <input type="text" id="pretraga" style="color:black;" />
+        <div id="table">
+        </div>
+    </body>
+</html>
