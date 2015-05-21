@@ -8,6 +8,7 @@ import org.apache.tapestry5.PropertyConduit;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.beaneditor.BeanModel;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -18,33 +19,45 @@ import org.apache.tapestry5.services.PropertyConduitSource;
  *
  * @author Stefan
  */
-public class GenericEditor<T extends AbstractEntity> {
+public abstract class GenericEditor<T extends AbstractEntity, DAO extends GenericDao<T>> {
 
     @Inject
-    private PropertyConduitSource conduit;
-    @Inject
-    private GenericDao genericDao;
+    protected PropertyConduitSource conduit;
+    //@Inject
+    //protected DAO getGenericDao;
     @Persist
     @Property
-    private T bean;
+    protected T bean;
     @Property
-    private T row;
+    protected T row;
     @Inject
-    private BeanModelSource beanModelSource;
+    protected BeanModelSource beanModelSource;
     @Inject
-    private ComponentResources componentResources;
+    protected ComponentResources componentResources;
     @Parameter
-    private Class klasa;
+    protected Class klasa;
+    @Property
+    protected List<T> grid;
     
     {
         PropertyConduit conduit1 = conduit.create(getClass(), "bean");
         klasa = conduit1.getPropertyType();
     }
-    
-    public List<T> getGrid() {
-        return genericDao.loadAll();
-    }
+    /*
+    @PageLoaded
+    void onPageLoad() {
+    }*/
 
+    @SetupRender
+    void setupRender() {
+        grid = getGenericDao().loadAll();
+    }
+    
+    /*
+    public List<T> getGrid() {
+        return getGenericDao().loadAll();
+    }
+    */
     public BeanModel<T> getFormModel() {
         return beanModelSource.createEditModel(
                 klasa, componentResources.getMessages()).exclude("id");
@@ -57,23 +70,26 @@ public class GenericEditor<T extends AbstractEntity> {
 
     @CommitAfter
     Object onActionFromDelete(int id) {
-        genericDao.delete(id);
+        getGenericDao().delete(id);
         return this;
     }
 
     @CommitAfter
     Object onActionFromEdit(int row) {
-        bean = (T) genericDao.getByID(row);
+        bean = (T) getGenericDao().getByID(row);
         return this;
     }
 
     @CommitAfter
     public Object onSuccess() {
-        genericDao.merge(bean);
+        getGenericDao().merge(bean);
         try {
             bean = (T) klasa.newInstance();
         } catch (Exception ex) {
         }
         return this;
     }
+    
+    protected abstract DAO getGenericDao();
+    
 }

@@ -8,6 +8,7 @@ import com.rile.methotels.services.dao.SobaDaoImpl;
 import com.rile.methotels.services.dao.KorisnikDao;
 import com.rile.methotels.services.dao.RezervacijaDao;
 import com.rile.methotels.services.dao.RezervacijaDaoImpl;
+import com.rile.methotels.services.dao.SobaDaoType;
 import com.rile.methotels.services.security.PageProtectionFilter;
 import java.io.IOException;
 
@@ -36,10 +37,10 @@ public class AppModule {
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
         // binder.bind(MyServiceInterface.class, MyServiceImpl.class
-        binder.bind(GenericDao.class, GenericDaoImpl.class);
         binder.bind(RezervacijaDao.class, RezervacijaDaoImpl.class);
-        binder.bind(SobaDao.class, SobaDaoImpl.class);
+        binder.bind(SobaDao.class, SobaDaoImpl.class).withMarker(SobaDaoType.class);
         binder.bind(KorisnikDao.class, KorisnikDaoImpl.class);
+        
     }
 
     public static void contributeFactoryDefaults(

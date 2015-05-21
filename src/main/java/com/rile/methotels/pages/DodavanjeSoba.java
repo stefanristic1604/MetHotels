@@ -1,10 +1,12 @@
 package com.rile.methotels.pages;
 
+import com.rile.methotels.components.SobaEditor;
 import com.rile.methotels.entities.Soba;
 import com.rile.methotels.services.dao.SobaDao;
 import com.rile.methotels.services.security.ProtectedPage;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
+import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.PageLoaded;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -18,7 +20,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 @ProtectedPage
 @RolesAllowed(value = {"Admin", "Sluzbenik"})
 public class DodavanjeSoba {
- 
+
     @Persist
     @Property
     private Soba soba;
@@ -32,14 +34,13 @@ public class DodavanjeSoba {
     @Inject
     private SobaDao sobaDao;
 
-    /*
     @Component
     @Property
-    private GenericEditor<Soba> geSoba;
-    */
-    
-    void onActivate() {}
-    
+    private SobaEditor geSoba;
+
+    void onActivate() {
+    }
+
     @PageLoaded
     void onPageLoad() {
         sobe = sobaDao.loadAll();
@@ -51,8 +52,7 @@ public class DodavanjeSoba {
             boolean elementExists = sobe.indexOf(soba) != -1;
             if (elementExists) {
                 sobe.set(sobe.indexOf(soba), sobaDao.merge(soba));
-            }
-            else {
+            } else {
                 sobe.add(sobaDao.merge(soba));
             }
             soba = new Soba();
@@ -60,6 +60,7 @@ public class DodavanjeSoba {
         return null;
     }
 
+    /*
     @CommitAfter
     Object onActionFromDelete(int id) {
         sobe.remove(sobaDao.delete(id));
@@ -72,5 +73,6 @@ public class DodavanjeSoba {
             soba = editSoba;
         }
         return null;
-    }
+    }*/
+
 }
