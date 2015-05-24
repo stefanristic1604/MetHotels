@@ -21,8 +21,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
     @NamedQuery(name = "Korisnik.findAll", query = "SELECT k FROM Korisnik k")})
 public class Korisnik extends AbstractEntity {
     
-    private static final long serialVersionUID = 1L;
-    
     @Validate("required")
     @Basic(optional = false)
     @Column(name = "korisnicko_ime")

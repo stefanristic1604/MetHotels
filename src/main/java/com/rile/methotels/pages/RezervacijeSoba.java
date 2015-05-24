@@ -48,6 +48,12 @@ public class RezervacijeSoba {
     @SessionState
     private Korisnik loggedInKorisnik;
     
+    /*
+    @Component
+    @Property
+    private RezervacijaEditor geRezervacija;
+    */
+    
     public ValueEncoder getEncoder() {
         return new ValueEncoder<Soba>() {
 
@@ -78,7 +84,7 @@ public class RezervacijeSoba {
         }
         return null;
     }
-    
+
     @CommitAfter
     Object onActionFromDelete(int id) {
         rezervacije.remove(rezervacijaDao.delete(id));

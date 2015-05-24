@@ -4,9 +4,6 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
     <body>
-        <t:sobaeditor t:id="geSoba" />
-        
-        <!--
         <t:beaneditform object="soba" exclude="id" />
         
         <t:grid source="sobe" exclude="id" add="edit, delete" t:options="options" row="oneSoba">
@@ -14,9 +11,9 @@
                 <t:actionlink t:id="edit" context="oneSoba">Edit</t:actionlink>
             </p:editCell>
             <p:deleteCell>
-                <t:actionlink t:id="delete" context="oneSoba.id">Delete</t:actionlink>
+                <t:actionlink t:id="delete" t:mixins="Confirm" context="oneSoba.id">Delete</t:actionlink>
             </p:deleteCell>
-        </t:grid>-->
+        </t:grid>
     </body> 
 </html>
 

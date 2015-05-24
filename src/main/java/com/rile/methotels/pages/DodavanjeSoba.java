@@ -1,12 +1,10 @@
 package com.rile.methotels.pages;
 
-import com.rile.methotels.components.SobaEditor;
 import com.rile.methotels.entities.Soba;
 import com.rile.methotels.services.dao.SobaDao;
 import com.rile.methotels.services.security.ProtectedPage;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
-import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.PageLoaded;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -34,12 +32,7 @@ public class DodavanjeSoba {
     @Inject
     private SobaDao sobaDao;
 
-    @Component
-    @Property
-    private SobaEditor geSoba;
-
-    void onActivate() {
-    }
+    void onActivate() {}
 
     @PageLoaded
     void onPageLoad() {
@@ -59,8 +52,7 @@ public class DodavanjeSoba {
         }
         return null;
     }
-
-    /*
+    
     @CommitAfter
     Object onActionFromDelete(int id) {
         sobe.remove(sobaDao.delete(id));
@@ -73,6 +65,6 @@ public class DodavanjeSoba {
             soba = editSoba;
         }
         return null;
-    }*/
+    }
 
 }

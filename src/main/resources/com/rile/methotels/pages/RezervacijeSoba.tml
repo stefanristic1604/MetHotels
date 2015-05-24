@@ -5,11 +5,13 @@
     xmlns:p="tapestry:parameter">
 
     <body>
+        <!--<t:rezervacijaeditor t:id="geRezervacija" />-->
+        
         <t:beaneditform object="rezervacija" exclude="id, sobaId" add="soba" >
             <p:soba>
                 <div class="form-group">
-                <t:label for="soba"/>
-                <t:select t:id="soba" value="soba" encoder="encoder" model="sobe" validate="required" />
+                    <t:label for="soba"/>
+                    <t:select t:id="soba" value="soba" encoder="encoder" model="sobe" validate="required" />
                 </div>
             </p:soba>
         </t:beaneditform>
@@ -21,6 +23,7 @@
                 </p:deleteCell>
             </t:grid>
         </t:if>
+        
         <!--
         <div class="row rezervacija_form">
             <form class="form-horizontal" t:type="form">

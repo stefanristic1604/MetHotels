@@ -2,6 +2,9 @@ package com.rile.methotels.components;
 
 import com.rile.methotels.entities.AbstractEntity;
 import com.rile.methotels.services.dao.GenericDao;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.PropertyConduit;
@@ -23,8 +26,6 @@ public abstract class GenericEditor<T extends AbstractEntity, DAO extends Generi
 
     @Inject
     protected PropertyConduitSource conduit;
-    //@Inject
-    //protected DAO getGenericDao;
     @Persist
     @Property
     protected T bean;
@@ -35,59 +36,71 @@ public abstract class GenericEditor<T extends AbstractEntity, DAO extends Generi
     @Inject
     protected ComponentResources componentResources;
     @Parameter
-    protected Class klasa;
+    protected Class clazz;
     @Property
     protected List<T> grid;
     
     {
         PropertyConduit conduit1 = conduit.create(getClass(), "bean");
-        klasa = conduit1.getPropertyType();
+        clazz = conduit1.getPropertyType();
     }
-    /*
-    @PageLoaded
-    void onPageLoad() {
-    }*/
 
     @SetupRender
     void setupRender() {
         grid = getGenericDao().loadAll();
     }
-    
-    /*
-    public List<T> getGrid() {
-        return getGenericDao().loadAll();
+
+    private String[] getExcludedFieldsNames(Class clazz) {
+        List<String> excludedFieldsNames = new ArrayList<String>();
+        
+        for (Field field : clazz.getDeclaredFields()) {
+            if (field.getName().toLowerCase().contains("id")) {
+                excludedFieldsNames.add(field.getName());
+            }
+        }
+        Class superClazz = clazz.getSuperclass();
+        if (superClazz != null) {
+            excludedFieldsNames.addAll(Arrays.asList(getExcludedFieldsNames(superClazz)));
+        }
+        return excludedFieldsNames.toArray(new String[excludedFieldsNames.size()]);
     }
-    */
+    
     public BeanModel<T> getFormModel() {
-        return beanModelSource.createEditModel(
-                klasa, componentResources.getMessages()).exclude("id");
+        return beanModelSource.createEditModel(clazz, componentResources.getMessages())
+                .exclude(getExcludedFieldsNames(clazz));
     }
 
     public BeanModel<T> getGridModel() {
-        return beanModelSource.createDisplayModel(
-                klasa, componentResources.getMessages()).exclude("id");
+        return beanModelSource.createDisplayModel(clazz, componentResources.getMessages())
+                .exclude(getExcludedFieldsNames(clazz));
     }
 
     @CommitAfter
     Object onActionFromDelete(int id) {
         getGenericDao().delete(id);
-        return this;
+        return null;
     }
 
     @CommitAfter
     Object onActionFromEdit(int row) {
         bean = (T) getGenericDao().getByID(row);
-        return this;
+        return null;
     }
 
     @CommitAfter
     public Object onSuccess() {
-        getGenericDao().merge(bean);
-        try {
-            bean = (T) klasa.newInstance();
-        } catch (Exception ex) {
+        if (bean != null) {
+            boolean elementExists = grid.indexOf(bean) != -1;
+            if (elementExists) {
+                grid.set(grid.indexOf(bean), getGenericDao().merge(bean));
+            } else {
+                grid.add(getGenericDao().merge(bean));
+            }
+            try {
+                bean = (T) clazz.newInstance();
+            } catch (Exception ex) {}
         }
-        return this;
+        return null;
     }
     
     protected abstract DAO getGenericDao();

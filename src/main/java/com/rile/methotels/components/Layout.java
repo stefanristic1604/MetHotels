@@ -28,8 +28,6 @@ public class Layout {
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
     private String title;
 
-    // use var:navItem as a parameter instead of property, inside tml:loop
-    // jk: http://stackoverflow.com/questions/29679416/pass-variable-to-a-method-as-a-parameter
     @Property
     private NavigationPage navItem;
 
@@ -132,7 +130,7 @@ public class Layout {
     public String getMenuPageName(String pageName) {
         String newName = "";
         if (pageName.equals("Index")) {
-            return "Početna";
+            return "Pocetna";
         }
         for (int i = 0; i < pageName.length(); i++) {
             if (Character.isUpperCase(pageName.charAt(i))) {

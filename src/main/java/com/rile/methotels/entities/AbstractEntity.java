@@ -16,6 +16,7 @@ import javax.persistence.MappedSuperclass;
 public class AbstractEntity implements Serializable, Comparable<AbstractEntity> {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

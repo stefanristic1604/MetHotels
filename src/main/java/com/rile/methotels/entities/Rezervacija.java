@@ -21,8 +21,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
     @NamedQuery(name = "Rezervacija.findAll", query = "SELECT r FROM Rezervacija r")})
 public class Rezervacija extends AbstractEntity {
 
-    private static final long serialVersionUID = 1L;
-
     @Validate("required")
     @Column(name = "soba_id")
     private Integer sobaId;

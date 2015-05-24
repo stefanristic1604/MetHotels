@@ -31,10 +31,6 @@
                                         <ul class="dropdown-menu">
                                             <t:loop source="navItem.subPages" value="var:subPage">
                                                 <t:any element="li" class="prop:classForPageName">
-                                                               <!-- 
-                                                                Does not work: ${getMenuPageName(var:subPage)} 
-                                                                might have to create property subPage
-                                                                -->
                                                     <t:pagelink page="var:subPage">${var:subPage}</t:pagelink>
                                                 </t:any>
                                             </t:loop>

@@ -18,8 +18,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
     @NamedQuery(name = "Soba.findAll", query = "SELECT s FROM Soba s")})
 public class Soba extends AbstractEntity {
     
-    private static final long serialVersionUID = 1L;
-    
     @Validate("regexp=^[A-Za-z]+$, required")
     @Column(name = "naziv")
     private String naziv;
@@ -93,7 +91,7 @@ public class Soba extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "com.rile.methotels.entities.Soba[ id=" + id + " ]";
+        return naziv;
     }
     
 }
