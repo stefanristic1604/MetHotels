@@ -16,7 +16,7 @@ public class TestComponent {
         nav.add(1, 
             new NavigationPage("Usluge", 
             new ArrayList<NavigationPage>() {{
-                add(new NavigationPage("Dodavanje Soba"));
+                add(new NavigationPage("DodavanjeSoba"));
                 add(new NavigationPage("Rezervacije", 
                     new ArrayList<NavigationPage>() {{
                         add(new NavigationPage("R1"));
@@ -24,10 +24,10 @@ public class TestComponent {
                         add(new NavigationPage("R3"));
                     }}
                 ));
-                add(new NavigationPage("Unos Korisnika"));
+                add(new NavigationPage("UnosKorisnika"));
             }}
         ));
-        nav.add(2, new NavigationPage("O Nama"));
+        nav.add(2, new NavigationPage("ONama"));
         
         return nav;
     }

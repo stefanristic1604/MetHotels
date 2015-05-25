@@ -1,5 +1,6 @@
 package com.rile.methotels.components;
 
+import com.rile.methotels.data.NavigationPage;
 import com.rile.methotels.entities.Korisnik;
 import com.rile.methotels.entities.Role;
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
-import org.apache.tapestry5.SymbolConstants;
 
 @Import(stylesheet = "context:mybootstrap/css/mystyle.css")
 public class Layout {
@@ -29,14 +29,6 @@ public class Layout {
     private String title;
 
     @Property
-    private NavigationPage navItem;
-
-    @Property
-    @Inject
-    @Symbol(SymbolConstants.APPLICATION_VERSION)
-    private String appVersion;
-
-    @Property
     @SessionState
     private Korisnik loggedInKorisnik;
 
@@ -50,32 +42,49 @@ public class Layout {
 
     public List<NavigationPage> getLeftNavigationMenu() {
         List<NavigationPage> leftNavMenu = new ArrayList<NavigationPage>();
-        leftNavMenu.add(0, new NavigationPage("Pocetna", null));
+        leftNavMenu.add(0, new NavigationPage("Pocetna"));
         leftNavMenu.add(1, new NavigationPage("Usluge", 
-            new String[] {"PregledSoba"}
+            new ArrayList<NavigationPage>() {{
+                add(new NavigationPage("PregledSoba"));
+            }} 
         ));
-        leftNavMenu.add(2, new NavigationPage("ONama", null));
-        leftNavMenu.add(3, new NavigationPage("Primeri", 
-            new String[] {
-                "TestComponent", "PrimerPaginacijaRezervacijaJQ", 
-                "PrimerPretragaRezervacijaJQ", "PrimerPretragaPlusPaginacijaRezervacija"
-            }
+        leftNavMenu.add(2, new NavigationPage("ONama"));
+        leftNavMenu.add(3, new NavigationPage("Primeri",
+            new ArrayList<NavigationPage>() {{
+                add(new NavigationPage("TestComponent"));
+                add(new NavigationPage("PrimerPaginacijaRezervacijaJQ"));
+                add(new NavigationPage("PrimerPretragaRezervacijaJQ"));
+                add(new NavigationPage("PrimerPretragaPlusPaginacijaRezervacija"));
+            }}
         ));
         
         if (isLoggedIn()) {
             if (loggedInKorisnik.getRola() == Role.Admin) {
                 leftNavMenu.set(1, new NavigationPage("Usluge", 
-                    new String[] {"AdminPanel", "UnosKorisnika", "DodavanjeSoba", "RezervacijeSoba", "PregledSoba"}
+                    new ArrayList<NavigationPage>() {{
+                        add(new NavigationPage("AdminPanel"));
+                        add(new NavigationPage("UnosKorisnika"));
+                        add(new NavigationPage("DodavanjeSoba"));
+                        add(new NavigationPage("RezervacijeSoba"));
+                        add(new NavigationPage("PregledSoba"));
+                    }}    
                 ));
             }
             else if (loggedInKorisnik.getRola() == Role.Sluzbenik) {
                 leftNavMenu.set(1, new NavigationPage("Usluge", 
-                    new String[] {"DodavanjeSoba", "RezervacijeSoba", "PregledSoba"}
+                    new ArrayList<NavigationPage>() {{
+                        add(new NavigationPage("DodavanjeSoba"));
+                        add(new NavigationPage("RezervacijeSoba"));
+                        add(new NavigationPage("PregledSoba"));
+                    }} 
                 ));
             }
             else if (loggedInKorisnik.getRola() == Role.Korisnik) {
                 leftNavMenu.set(1, new NavigationPage("Usluge", 
-                    new String[] {"RezervacijeSoba", "PregledSoba"}
+                    new ArrayList<NavigationPage>() {{
+                        add(new NavigationPage("RezervacijeSoba"));
+                        add(new NavigationPage("PregledSoba"));
+                    }}
                 ));
             }
         }
@@ -84,47 +93,8 @@ public class Layout {
     
     public NavigationPage[] getRightNavigationMenu() {
         return new NavigationPage[]{
-            new NavigationPage("Prijava", null),
-            new NavigationPage("Registracija", null)
+            new NavigationPage("Prijava"),
+            new NavigationPage("Registracija")
         };
     }
-
-    protected class NavigationPage {
-
-        private String mainPage;
-        private String[] subPages;
-
-        public NavigationPage(String mainPage, String[] subPages) {
-            this.mainPage = mainPage;
-            this.subPages = subPages;
-        }
-
-        public String getMainPage() {
-            return mainPage;
-        }
-
-        public void setMainPage(String mainPage) {
-            this.mainPage = mainPage;
-        }
-
-        public String[] getSubPages() {
-            return subPages;
-        }
-
-        public void setSubPages(String[] subPages) {
-            this.subPages = subPages;
-        }
-    }
-
-    public String getMenuPageName(String pageName) {
-        String newName = "";
-        for (int i = 0; i < pageName.length(); i++) {
-            if (Character.isUpperCase(pageName.charAt(i))) {
-                newName += " ";
-            }
-            newName += pageName.charAt(i);
-        }
-        return newName;
-    }
-
 }

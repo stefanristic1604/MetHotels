@@ -13,7 +13,7 @@
         <div style="display: table; margin: 0 auto;">
             <h2>Counter</h2>
             <t:counter />
-            <h2>Navigation</h2>
+            <h2>Navigation</h2>             <!-- cssClass="'nav navbar-nav navbar-left'" -->
             <t:navigation source="getNavPages()" />
         </div>
         <br/>
