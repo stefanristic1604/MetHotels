@@ -1,0 +1,10 @@
+<html t:type="layout" title="TapestryHibernateDemo Index"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <t:grid source="sobe" row="soba" exclude="id" t:inplace="true">
+        <p:nazivCell>
+            <div t:id="nazivSobe" value="soba.naziv" t:type="jquery/inPlaceEditor" t:context="soba.id"/>
+        </p:nazivCell>
+    </t:grid>
+</html>

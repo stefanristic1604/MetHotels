@@ -2,9 +2,11 @@ package com.rile.methotels.components;
 
 import com.rile.methotels.data.NavigationPage;
 import java.util.List;
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.annotations.BeginRender;
 import org.apache.tapestry5.annotations.Parameter;
+import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
@@ -16,6 +18,8 @@ public class Navigation {
     private List<NavigationPage> source;
     @Parameter(value = "null")
     private String cssClass;
+    @Inject
+    private ComponentResources resources;
     
     @BeginRender
     void beginRender(MarkupWriter writer) {
@@ -46,7 +50,7 @@ public class Navigation {
             }
             else {
                 writer.writeRaw(
-                    "<li>" + 
+                    "<li class=" + getCSSForActivePage(navPage.getMainPage()) + ">" + 
                         "<a href='" + getPageClassName(navPage.getMainPage()) +"'>" + 
                             getPageName(navPage.getMainPage()) + 
                         "</a>" +
@@ -64,9 +68,8 @@ public class Navigation {
         return pageName;
     }
     
-    String applyCSSActive() {
-        // TO ADD: @Inject ComponentResource resource;
-        return "";
+    String getCSSForActivePage(String navPage) {
+        return resources.getPageName().equalsIgnoreCase(navPage)  ? "active" : null;
     }
     
 }

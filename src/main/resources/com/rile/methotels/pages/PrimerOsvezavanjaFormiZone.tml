@@ -1,0 +1,21 @@
+<html t:type="layout" title="PrimerOsvezavanjaZone"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <body>
+        <t:zone t:id="formZone">
+            <t:beaneditform object="rezervacija" t:zone="zoneRezervacija" exclude="id, sobaId" >
+            </t:beaneditform>
+        </t:zone>
+        <t:zone t:id="zoneRezervacija">
+            <t:grid source="rezervacije" t:inplace="true" exclude="id, sobaId" add="edit, delete" t:options="options" row="oneRezervacija">
+                <p:editCell>
+                    <t:actionlink t:id="edit" t:zone="formZone" context="oneRezervacija">Edit</t:actionlink>
+                </p:editCell>
+                <p:deleteCell>
+                    <t:actionlink t:id="delete" t:zone="zoneRezervacija" context="oneRezervacija.id">Delete</t:actionlink>
+                </p:deleteCell>
+            </t:grid>
+        </t:zone>
+    </body>
+</html>

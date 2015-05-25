@@ -55,6 +55,9 @@ public class Layout {
                 add(new NavigationPage("PrimerPaginacijaRezervacijaJQ"));
                 add(new NavigationPage("PrimerPretragaRezervacijaJQ"));
                 add(new NavigationPage("PrimerPretragaPlusPaginacijaRezervacija"));
+                add(new NavigationPage("PrimerOsvezavanjaZone"));
+                add(new NavigationPage("PrimerOsvezavanjaFormiZone"));
+                add(new NavigationPage("PrimerInPlaceEditor"));
             }}
         ));
         

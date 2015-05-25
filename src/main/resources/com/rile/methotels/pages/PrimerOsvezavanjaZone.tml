@@ -1,0 +1,12 @@
+<html t:type="layout" title="PrimerOsvezavanjaZone"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <body>
+        <div class="eg">
+            serversko vreme 1: ${serverTime1} <a t:type="eventlink" t:event="refreshPage" href="#">Osvezi celu stranu</a><br />
+            <t:zone t:id="time2Zone"> serversko vreme 2: ${serverTime2}<a t:type="eventlink" t:event="refreshZone" href="#" t:zone="time2Zone"> Osvezi samo serversko vreme</a></t:zone>
+            <t:zone t:id="time3Zone" t:mixins='jquery/zonerefresh' t:period='1'> serversko vreme 3: ${serverTime3} Automatsko osvezavanje</t:zone>
+        </div>
+    </body>
+</html>
