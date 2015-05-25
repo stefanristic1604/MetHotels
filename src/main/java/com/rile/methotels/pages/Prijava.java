@@ -30,7 +30,7 @@ public class Prijava {
     
     Object onActivate() {
         if (loggedInKorisnik.getEmail() != null) {
-            return Index.class;
+            return Pocetna.class;
         }
         return null;
     }
@@ -57,7 +57,7 @@ public class Prijava {
             if (loggedInKorisnik.getRola() == Role.Admin) {
                 return AdminPanel.class;
             }
-            return Index.class;
+            return Pocetna.class;
         } else {
             form.recordError("Uneli ste pogrešne parametre");
             System.out.println("Loši parameteri");

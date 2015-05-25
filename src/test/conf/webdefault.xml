@@ -109,8 +109,9 @@
 
     <!-- ==================================================================== -->
     <welcome-file-list>
-        <welcome-file>Index.html</welcome-file>
-        <welcome-file>Index.htm</welcome-file>
+        <welcome-file>Pocetna.tml</welcome-file>
+        <!--<welcome-file>Pocetna.html</welcome-file>-->
+        <!--<welcome-file>Pocetna.htm</welcome-file>-->
     </welcome-file-list>
 
     <!-- ==================================================================== -->

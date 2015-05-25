@@ -2,7 +2,7 @@ package com.rile.methotels.services.security;
 
 import com.rile.methotels.entities.Korisnik;
 import com.rile.methotels.entities.Role;
-import com.rile.methotels.pages.Index;
+import com.rile.methotels.pages.Pocetna;
 import com.rile.methotels.pages.Prijava;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -114,7 +114,7 @@ public class PageProtectionFilter implements ComponentRequestFilter {
             // Else, redirect to the PageDenied page
             else {
                 Link pageProtectedLink = pageRenderLinkSource.createPageRenderLinkWithContext(
-                    Index.class, requestedPageName
+                    Pocetna.class, requestedPageName
                 );
                 response.sendRedirect(pageProtectedLink);
                 return false;

@@ -117,7 +117,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>IT250-DZ05_MetHotels-Stefan_Ristic_1604</finalName>
+        <finalName>IT250-MetHotels-Stefan_Ristic_1604</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

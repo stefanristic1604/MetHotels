@@ -31,7 +31,7 @@ public class Registracija {
     
     Object onActivate() {
         if (loggedInKorisnik.getEmail() != null) {
-            return Index.class;
+            return Pocetna.class;
         }
         return null;
     }
@@ -59,7 +59,7 @@ public class Registracija {
             // registruj korisnika
             Korisnik korisnik = korisnikDao.merge(korisnikReg);
             loggedInKorisnik = korisnik;
-            return Index.class;
+            return Pocetna.class;
         } else {
             form.recordError("Email koji ste uneli vec postoji");
             return null;

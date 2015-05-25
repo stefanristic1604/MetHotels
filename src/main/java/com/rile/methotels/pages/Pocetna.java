@@ -1,5 +1,5 @@
 package com.rile.methotels.pages;
 
-public class Index {
+public class Pocetna {
     
 }

@@ -14,23 +14,23 @@
         <div class="container">
             <div class="header">
                 <nav class="navbar navbar-default" role="navigation">
-                    <a class="navbar-brand" t:type="pagelink" page="Index">MetHotels</a>
+                    <a class="navbar-brand" t:type="pagelink" page="Pocetna">MetHotels</a>
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
                             <t:loop source="leftNavigationMenu" value="navItem">
                                 <t:if test="${!navItem.subPages}">
-                                    <t:any element="li" class="prop:classForPageName">
+                                    <t:any element="li">
                                         <t:pagelink page="${navItem.mainPage}">${getMenuPageName(navItem.mainPage)}</t:pagelink>
                                     </t:any>
                                 </t:if>
                                 <t:if test="${navItem.subPages}">
-                                    <t:any element="li" class="dropdown prop:classForPageName">
+                                    <t:any element="li" class="dropdown">
                                         <t:pagelink data-toggle="dropdown" class="dropdown-toggle" page="${navItem.mainPage}">
                                             ${getMenuPageName(navItem.mainPage)}<b class="caret"></b>
                                         </t:pagelink>
                                         <ul class="dropdown-menu">
                                             <t:loop source="navItem.subPages" value="var:subPage">
-                                                <t:any element="li" class="prop:classForPageName">
+                                                <t:any element="li">
                                                     <t:pagelink page="var:subPage">${var:subPage}</t:pagelink>
                                                 </t:any>
                                             </t:loop>

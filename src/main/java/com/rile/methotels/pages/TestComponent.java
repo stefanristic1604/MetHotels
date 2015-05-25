@@ -12,7 +12,7 @@ public class TestComponent {
     
     public List<NavigationPage> getNavPages() {
         List<NavigationPage> nav = new ArrayList<NavigationPage>();
-        nav.add(0, new NavigationPage("Index"));
+        nav.add(0, new NavigationPage("Pocetna"));
         nav.add(1, 
             new NavigationPage("Usluge", 
             new ArrayList<NavigationPage>() {{

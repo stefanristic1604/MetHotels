@@ -41,50 +41,40 @@ public class Layout {
     private Korisnik loggedInKorisnik;
 
     public boolean isLoggedIn() {
-        if (loggedInKorisnik.getEmail() != null) {
-            return true;
-        }
-        return false;
+        return loggedInKorisnik.getEmail() != null;
     }
 
     public void onActionFromLogout() {
         loggedInKorisnik = null;
     }
 
-    public String getClassForPageName() {
-        return resources.getPageName().equalsIgnoreCase(navItem.getMainPage())
-                ? "active"
-                : null;
-    }
-
-    public String getClassForPageName(String pageName) {
-        return resources.getPageName().equalsIgnoreCase(pageName)
-                ? "active"
-                : null;
-    }
-
     public List<NavigationPage> getLeftNavigationMenu() {
         List<NavigationPage> leftNavMenu = new ArrayList<NavigationPage>();
-        leftNavMenu.add(0, new NavigationPage("Index", null));
-        leftNavMenu.add(1, new NavigationPage("Usluge", new String[] {"PregledSoba"}));
+        leftNavMenu.add(0, new NavigationPage("Pocetna", null));
+        leftNavMenu.add(1, new NavigationPage("Usluge", 
+            new String[] {"PregledSoba"}
+        ));
         leftNavMenu.add(2, new NavigationPage("ONama", null));
+        leftNavMenu.add(3, new NavigationPage("Primeri", 
+            new String[] {
+                "TestComponent", "PrimerPaginacijaRezervacijaJQ", 
+                "PrimerPretragaRezervacijaJQ", "PrimerPretragaPlusPaginacijaRezervacija"
+            }
+        ));
         
         if (isLoggedIn()) {
             if (loggedInKorisnik.getRola() == Role.Admin) {
-                leftNavMenu.set(1, new NavigationPage(
-                    "Usluge", 
+                leftNavMenu.set(1, new NavigationPage("Usluge", 
                     new String[] {"AdminPanel", "UnosKorisnika", "DodavanjeSoba", "RezervacijeSoba", "PregledSoba"}
                 ));
             }
             else if (loggedInKorisnik.getRola() == Role.Sluzbenik) {
-                leftNavMenu.set(1, new NavigationPage(
-                    "Usluge", 
+                leftNavMenu.set(1, new NavigationPage("Usluge", 
                     new String[] {"DodavanjeSoba", "RezervacijeSoba", "PregledSoba"}
                 ));
             }
             else if (loggedInKorisnik.getRola() == Role.Korisnik) {
-                leftNavMenu.set(1, new NavigationPage(
-                    "Usluge", 
+                leftNavMenu.set(1, new NavigationPage("Usluge", 
                     new String[] {"RezervacijeSoba", "PregledSoba"}
                 ));
             }
@@ -126,12 +116,8 @@ public class Layout {
         }
     }
 
-    // use parameter instead of pageName property
     public String getMenuPageName(String pageName) {
         String newName = "";
-        if (pageName.equals("Index")) {
-            return "Pocetna";
-        }
         for (int i = 0; i < pageName.length(); i++) {
             if (Character.isUpperCase(pageName.charAt(i))) {
                 newName += " ";
