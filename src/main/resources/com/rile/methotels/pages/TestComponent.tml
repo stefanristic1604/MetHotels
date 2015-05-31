@@ -15,6 +15,45 @@
             <t:counter />
             <h2>Navigation</h2>             <!-- cssClass="'nav navbar-nav navbar-left'" -->
             <t:navigation source="getNavPages()" />
+            <h2>Progress Bar</h2>
+            <t:progressbar 
+                minValue="75" maxValue="330" currentValue="202.5" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="0" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="10" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="20" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="30" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="40" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="50" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="60" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="70" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="80" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="90" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+            <t:progressbar 
+                minValue="0" maxValue="100" currentValue="100" width="'100%'" height="'25px'" textFormat="'percentage'"
+            />
+           
+            
         </div>
         <br/>
     </body>
