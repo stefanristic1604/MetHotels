@@ -40,6 +40,18 @@
             <artifactId>tapestry5-jquery</artifactId>
             <version>4.0.1-SNAPSHOT</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.tynamo</groupId>
+            <artifactId>tapestry-resteasy</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
 
         <!-- Uncomment this to add support resource minification and runtime compilation -->
         <!--
@@ -124,8 +136,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>

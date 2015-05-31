@@ -8,6 +8,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
@@ -15,6 +16,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  *
  * @author Stefan
  */
+@XmlRootElement
 @Entity
 @Table(name = "rezervacija")
 @NamedQueries({

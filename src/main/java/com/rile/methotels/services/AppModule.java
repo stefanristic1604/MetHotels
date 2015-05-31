@@ -1,5 +1,7 @@
 package com.rile.methotels.services;
 
+import com.rile.methotels.rest.RezervacijaWebService;
+import com.rile.methotels.rest.RezervacijaWebServiceInterface;
 import com.rile.methotels.services.dao.SobaDao;
 import com.rile.methotels.services.dao.KorisnikDaoImpl;
 import com.rile.methotels.services.dao.SobaDaoImpl;
@@ -11,11 +13,15 @@ import com.rile.methotels.services.security.PageProtectionFilter;
 import java.io.IOException;
 
 import org.apache.tapestry5.*;
+import org.apache.tapestry5.hibernate.HibernateTransactionAdvisor;
+import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.MethodAdviceReceiver;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.annotations.Match;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.*;
@@ -38,7 +44,20 @@ public class AppModule {
         binder.bind(RezervacijaDao.class, RezervacijaDaoImpl.class).withMarker(RezervacijaDaoType.class);
         binder.bind(SobaDao.class, SobaDaoImpl.class);
         binder.bind(KorisnikDao.class, KorisnikDaoImpl.class);
-        
+        binder.bind(RezervacijaWebServiceInterface.class, RezervacijaWebService.class);
+
+    }
+
+    @Match("*Rezervacija*")
+    public static void adviseTransactionally(
+            HibernateTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
+        advisor.addTransactionCommitAdvice(receiver);
+    }
+
+    @Contribute(javax.ws.rs.core.Application.class)
+    public static void configureRestResources(Configuration<Object> singletons,
+            RezervacijaWebServiceInterface rezWeb) {
+        singletons.add(rezWeb);
     }
 
     public static void contributeFactoryDefaults(
@@ -61,7 +80,7 @@ public class AppModule {
         // locales to just "en" (English). As you add localised message catalogs and other assets,
         // you can extend this list of locales (it's a comma separated series of locale names;
         // the first locale name is the default when there's no reasonable match).
-        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en, sr");
         configuration.add("tapestry.start-page-name", "pocetna");
     }
 
@@ -81,12 +100,12 @@ public class AppModule {
     @Core
     public static void overrideBootstrapCSS(OrderedConfiguration<StackExtension> configuration) {
         configuration.override(
-            "bootstrap.css",
-            new StackExtension(
-                    StackExtensionType.STYLESHEET,
-                    "context:mybootstrap/css/mybootstrap.css"
-            ),
-            "before:tapestry.css"
+                "bootstrap.css",
+                new StackExtension(
+                        StackExtensionType.STYLESHEET,
+                        "context:mybootstrap/css/mybootstrap.css"
+                ),
+                "before:tapestry.css"
         );
     }
 
@@ -141,5 +160,5 @@ public class AppModule {
     public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration) {
         configuration.addInstance("PageProtectionFilter", PageProtectionFilter.class);
     }
-    
+
 }
