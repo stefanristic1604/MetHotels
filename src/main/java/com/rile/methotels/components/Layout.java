@@ -5,10 +5,13 @@ import com.rile.methotels.entities.Korisnik;
 import com.rile.methotels.entities.Role;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
+import org.apache.tapestry5.ioc.Messages;
+import org.apache.tapestry5.services.PersistentLocale;
 
 @Import(stylesheet = "context:mybootstrap/css/mystyle.css")
 public class Layout {
@@ -31,11 +34,16 @@ public class Layout {
     @Property
     @SessionState
     private Korisnik loggedInKorisnik;
+    
+    @Inject
+    private Messages messages;
+    @Inject
+    private PersistentLocale persistentLocale;
 
     public boolean isLoggedIn() {
         return loggedInKorisnik.getEmail() != null;
     }
-
+    
     public void onActionFromLogout() {
         loggedInKorisnik = null;
     }
@@ -58,6 +66,7 @@ public class Layout {
                 add(new NavigationPage("PrimerOsvezavanjaZone"));
                 add(new NavigationPage("PrimerOsvezavanjaFormiZone"));
                 add(new NavigationPage("PrimerInPlaceEditor"));
+                add(new NavigationPage("RezervacijaService"));
             }}
         ));
         
@@ -94,10 +103,17 @@ public class Layout {
         return leftNavMenu;
     }
     
-    public NavigationPage[] getRightNavigationMenu() {
-        return new NavigationPage[]{
-            new NavigationPage("Prijava"),
-            new NavigationPage("Registracija")
-        };
+    Object onActionFromChangeLanguage() {
+        System.out.println("");
+        if (!persistentLocale.isSet()) {
+            persistentLocale.set(new Locale("en"));
+        }
+        if ("en".equalsIgnoreCase(persistentLocale.get().getLanguage())) {
+            persistentLocale.set(new Locale("sr"));
+        } else {
+            persistentLocale.set(new Locale("en"));
+        }
+        return this;
     }
+    
 }

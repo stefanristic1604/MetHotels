@@ -6,7 +6,7 @@
 
     <body>
         <div class="myjumbotron">
-            <img src="images/Premium-201-6.jpg" alt="" />
+            <img src="${context:images/Premium-201-6.jpg}" alt="" />
             <div class="myjumbotron_info">
                 <h4>Specijalna poslovna ponuda</h4>
                 <p>
