@@ -23,6 +23,9 @@ import org.apache.tapestry5.ioc.annotations.Inject;
     @NamedQuery(name = "Korisnik.findAll", query = "SELECT k FROM Korisnik k")})
 public class Korisnik extends AbstractEntity {
     
+    @Column(name = "facebook_id")
+    private String facebookId;
+    
     @Validate("required")
     @Basic(optional = false)
     @Column(name = "korisnicko_ime")
@@ -78,6 +81,15 @@ public class Korisnik extends AbstractEntity {
 
     public void setRola(Role rola) {
         this.rola = rola;
+    }
+
+
+    public String getFacebookId() {
+        return facebookId;
+    }
+
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
     }
 
     @Override

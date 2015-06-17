@@ -45,6 +45,7 @@ public class AppModule {
         binder.bind(SobaDao.class, SobaDaoImpl.class);
         binder.bind(KorisnikDao.class, KorisnikDaoImpl.class);
         binder.bind(RezervacijaWebServiceInterface.class, RezervacijaWebService.class);
+        binder.bind(FacebookService.class);
 
     }
 

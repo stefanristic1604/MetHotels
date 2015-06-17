@@ -52,6 +52,24 @@
             <artifactId>resteasy-jackson-provider</artifactId>
             <version>3.0.7.Final</version>
         </dependency>
+        
+        <dependency>
+            <groupId>net.smartam.leeloo</groupId>
+            <artifactId>oauth2-client</artifactId>
+            <version>0.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.smartam.leeloo</groupId>
+            <artifactId>oauth2-common</artifactId>
+            <version>0.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.restfb</groupId>
+            <artifactId>restfb</artifactId>
+            <version>1.6.11</version>
+        </dependency>
 
         <!-- Uncomment this to add support resource minification and runtime compilation -->
         <!--

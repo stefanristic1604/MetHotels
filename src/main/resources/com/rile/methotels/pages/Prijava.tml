@@ -5,6 +5,25 @@
       xmlns:p="tapestry:parameter">
 
     <body>
+        <t:if test="loggedInFb">
+            <script>
+            window.onload = function(){
+                location.reload();
+            } 
+            </script>
+        </t:if>
+        <t:beaneditform t:id="form" object="korisnikLogin" submitlabel="Prijavi se" exclude="id,rola,facebookId">
+            <t:errors/>
+            <p:lozinka>
+                <t:label for="lozinka"/>
+                <t:passwordfield t:id="lozinka" value="korisnikLogin.lozinka"/>
+            </p:lozinka>
+        </t:beaneditform>
+        <a href="${facebookAuthentificationLink}" style="color: blue;">
+            <input type="button" class="input2" value="Facebook Prijava"/>
+        </a>
+        
+        <!--
         <t:beaneditform t:id="form" object="korisnikLogin" submitlabel="Prijavi se" exclude="id, email, rola">
             <t:errors/>
             <p:lozinka>
@@ -12,6 +31,7 @@
                 <t:passwordfield t:id="lozinka" value="korisnikLogin.lozinka"/>
             </p:lozinka>
         </t:beaneditform>
+        -->
     </body>
   
 </html>

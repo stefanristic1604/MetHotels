@@ -8,7 +8,8 @@ import com.rile.methotels.entities.Korisnik;
  */
 public interface KorisnikDao extends GenericDao<Korisnik> {
 
-    public Korisnik checkKorisnik(String korisnickoIme, String lozinka);
-    public boolean checkIfEmailExists(String email);
+    Korisnik checkKorisnik(String korisnickoIme, String lozinka);
+    boolean checkIfEmailExists(String email);
+    Korisnik checkIfFaceBookExists(String id);
 
 }

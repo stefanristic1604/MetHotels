@@ -29,4 +29,10 @@ public class KorisnikDaoImpl extends GenericDaoImpl<Korisnik> implements Korisni
         return (rows != 0);
     }
 
+    @Override
+    public Korisnik checkIfFaceBookExists(String id) {
+        return (Korisnik) session.createCriteria(classType)
+                .add(Restrictions.eq("facebookId", id)).uniqueResult();
+    }
+
 }
